@@ -15,7 +15,7 @@ android {
         versionName "1.0"
     }
 
-    // 👇 我加的关键配置，解决闪退
+    // 关键配置：把 OpenCV 底层库打包进 APK
     sourceSets {
         main {
             jniLibs.srcDirs = ['../opencv_sdk/sdk/native/libs']
@@ -34,6 +34,7 @@ android {
         targetCompatibility JavaVersion.VERSION_17
     }
 
+    // 修正笔误：jniTarget → jvmTarget
     kotlinOptions {
         jvmTarget = '17'
     }
@@ -53,6 +54,4 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3'
 
     implementation project(':opencv_sdk')
-    include ':opencv_sdk'
-     project(':opencv_sdk').projectDir = new File('./opencv_sdk/sdk')
 }
