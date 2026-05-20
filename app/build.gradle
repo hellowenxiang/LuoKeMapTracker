@@ -15,6 +15,13 @@ android {
         versionName "1.0"
     }
 
+    // 👇 我加的关键配置，解决闪退
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['../opencv_sdk/sdk/native/libs']
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -28,7 +35,7 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = '17'
+        jniTarget = '17'
     }
 
     buildFeatures {
@@ -45,6 +52,5 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.7.0'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3'
 
-    // OpenCV Android SDK (本地模块，CI 自动下载)
     implementation project(':opencv_sdk')
 }
