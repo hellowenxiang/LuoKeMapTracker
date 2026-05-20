@@ -35,7 +35,7 @@ android {
     }
 
     kotlinOptions {
-        jniTarget = '17'
+        jvmTarget = '17'
     }
 
     buildFeatures {
@@ -53,4 +53,6 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3'
 
     implementation project(':opencv_sdk')
+    include ':opencv_sdk'
+     project(':opencv_sdk').projectDir = new File('./opencv_sdk/sdk')
 }
